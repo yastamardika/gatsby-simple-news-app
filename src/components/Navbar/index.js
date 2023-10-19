@@ -62,7 +62,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 
 const drawerWidth = 240;
-const navItems = ['home', 'About', 'Saved'];
+const navItems = ['Home', 'About', 'Saved'];
 const navUrl = ['/', 'about', 'saved'];
 
 function DrawerAppBar(props) {
@@ -76,14 +76,16 @@ function DrawerAppBar(props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        MUI
+        Newsify
       </Typography>
       <Divider />
       <List>
         {navItems.map((item,i) => (
           <ListItem key={navUrl[i]} disablePadding>
             <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
+              <Button href={navUrl[i]} key={item}>
+                <ListItemText to={navUrl[i]} primary={item} />
+              </Button>
             </ListItemButton>
           </ListItem>
         ))}
@@ -125,7 +127,6 @@ function DrawerAppBar(props) {
           </Search>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item,i) => (
-              // <Link to={"/contact/"}>{item}</Link>
               <Button href={navUrl[i]} key={item} sx={{ color: '#fff' }}>
                 {item}
               </Button>
