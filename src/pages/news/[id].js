@@ -13,8 +13,6 @@ import Layout from "../../layouts";
 const defaultTheme = createTheme();
 
 const NewsDetail = ({ location }) => {
-  console.log(location.state.apiUrl)
-  console.log(location.state)
   const { webTitle, fields } = location.state;
   return (
     <ThemeProvider theme={defaultTheme}>
