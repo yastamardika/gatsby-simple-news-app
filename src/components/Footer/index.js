@@ -34,7 +34,7 @@ export default function Footer() {
           color="text.secondary"
           component="p"
         >
-          Haiii
+          Newsify: Your Gateway to The Guardian. Get the latest news, powered by The Guardian API. Stay informed with ease. Explore top stories across diverse categories. Your trusted source for breaking news and in-depth insights.
         </Typography>
         <Copyright />
       </Box>

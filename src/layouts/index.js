@@ -13,9 +13,8 @@ export default function Layout({ children }) {
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
       <Navbar/>
-
         {/* Yield the content here */}
-        <div style={{ margin: `0 auto`, maxWidth: 650, padding: `0 1rem` }}>
+        <div style={{ margin: `0 auto`, maxWidth: 1280, padding: `0 1rem` }}>
             {children}
         </div>
       {/* Footer */}

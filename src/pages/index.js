@@ -25,8 +25,16 @@ export default function HomePage() {
 
   const [data, setData] = useState([]);
 
+  function fDateTime(rawDate) {
+    const formattedDate = new Date(rawDate);
+
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    const date = formattedDate.toLocaleDateString("en-US", options);
+    
+    return date;
+  }
+
   useEffect(() => {
-    // Replace 'YOUR_API_ENDPOINT' with the actual API endpoint you want to fetch data from
     const apiUrl = 'https://content.guardianapis.com/search?page-size=15&api-key=deda27a9-4ba6-451f-a8a0-183a2fbeae42&show-fields=all';
 
     axios.get(apiUrl)
@@ -51,7 +59,6 @@ export default function HomePage() {
       <Layout>
         <main>
           <Box 
-          // sx={{ py: 8 }} maxWidth={false} fixed={true}
             sx={{
               minHeight: "100vh",
               minWidth: "100%",
@@ -89,16 +96,22 @@ export default function HomePage() {
                       <Typography variant="p">
                         {card.fields.trailText}
                       </Typography>
+                      <br/>
+                      <Typography variant="body2" color="text.secondary">
+                        Author: {card.fields.byline}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        Published: {fDateTime(card.webPublicationDate)}
+                      </Typography>
                     </CardContent>
                     <CardActions>
-                      {/* <Link to={card.field}></Link> */}
                       <Button component={Link} size="small" state={card} to={`/news/${card.webPublicationDate}`}>Read</Button>
                       <LikeButton
                         articleId={card.apiUrl}
                         news={card}
                         isLiked={card.isLiked}
                         handleLikeToggle={(isLiked) => {
-                          // Update the liked status in your newsData state
+                          // Update the liked status in news state
                           setData((prevData) =>
                             prevData.map((item) =>
                               item.id === card.id ? { ...item, isLiked } : item
@@ -106,13 +119,19 @@ export default function HomePage() {
                           );
                         }}
                       />
-                      {/* <LikeButton onClick={addArticle(card)} size="small">Like</LikeButton> */}
                     </CardActions>
                   </Card>
                 </Grid>
               ))
             ) : (
-              <p>Loading data...</p>
+              <Typography variant="p">
+                        Loading data...
+                      </Typography>
+              // <p sx= {{
+              //   height: "100%",
+              //   display: "flex",
+              //   flexDirection: "column",
+              // }} >Loading data...</p>
             )}
             </Grid>
           </Box>

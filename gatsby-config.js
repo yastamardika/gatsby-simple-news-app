@@ -3,7 +3,7 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Simple News App`,
+    title: `Newsify News App`,
     siteUrl: `https://www.yourdomain.tld`
   },
   plugins: ["gatsby-plugin-image", "gatsby-plugin-sharp","gatsby-plugin-material-ui", "gatsby-transformer-sharp", {
